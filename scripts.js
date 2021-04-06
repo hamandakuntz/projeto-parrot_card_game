@@ -18,7 +18,7 @@ function inserirCartas () {
     const lista = document.querySelector(".lista"); 
 
     for (let i = 0; i < numeroCartas; i++) {        
-        lista.innerHTML = `<li><img src="imagens/front.png"></li>`           
+        lista.innerHTML += `<li><img src="imagens/front.png"></li>`           
     }
    
 }
