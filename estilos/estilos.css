@@ -16,14 +16,21 @@ body {
 
 img {
     width: 100px;
-    height: 100px;
-    margin-top: 20px;
+    height: 90px;
+    margin-top: 28px;
     padding-left: 10px;
+}
+
+.conteudo {
+    width: 70%;   
+    margin: 0 auto;
 }
 
 ul {
     display: flex;      
-    margin-bottom: 50px;    
+    margin-bottom: 50px;      
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 li {
@@ -32,8 +39,9 @@ li {
     background: #A7E9AF;
     border: 1px solid #99CEA8;
     border-radius: 5px; 
-    margin-left: auto;
-    margin-right: auto;    
+    margin-left: 35px;
+    margin-right: 35px; 
+    margin-bottom: 35px;   
 }
 
 @media (max-width: 700px) {
@@ -43,6 +51,11 @@ li {
         line-height: 42px;       
         text-align: center;  
         margin-bottom: 25px;     
+    }
+
+    .conteudo {
+        width: auto;    
+        margin: 0 auto;
     }
 
     ul {
