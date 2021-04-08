@@ -1,5 +1,6 @@
 let numeroCartas = 0;
 let listaCartas = ["bobrossparrot", "explodyparrot", "fiestaparrot", "metalparrot", "revertitparrot", "tripletsparrot", "unicornparrot"]
+let largura = 0;
 
 function perguntarNumeroCartas () {    
 
@@ -25,12 +26,34 @@ function inserirCartas () {
     }
 
     listaCartasSelecionadas.sort(comparador);
+      
 
     for (let i = 0; i < numeroCartas ; i++) {            
         lista.innerHTML += `<li onclick="virar(this)"><img src="imagens/front.png"><img src="imagens/${listaCartasSelecionadas[i]}.gif" class="escondido"></li>`               
-    }
+    } 
+    
+    mudaLargura();
         
 }
+
+function mudaLargura () {
+
+    if (numeroCartas == 4){
+        largura = 300;
+    } if (numeroCartas == 6){
+        largura = 450;
+    } if (numeroCartas == 8){
+        largura = 650;
+    } if (numeroCartas == 10){
+        largura = 750;
+    } if (numeroCartas == 12){
+        largura = 900;
+    } if (numeroCartas == 14){
+        largura = 1050;
+    }
+    document.getElementById("listaCartas").style.width = `${largura}px`;    
+}
+
 
 
 function comparador() { 
@@ -64,3 +87,4 @@ function atualizarTemporizador () {
     contador++;
     console.log(contador)
 }
+

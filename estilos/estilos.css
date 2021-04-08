@@ -7,7 +7,7 @@ body {
     font-size: 56px;    
     font-weight: 700;
     margin-top: 40px;
-    margin-bottom: 100px;
+    margin-bottom: 40px;
     text-align: center;
     color:#75B79E;    
     line-height: 66px;
@@ -49,10 +49,10 @@ img {
 }
 
 ul {
-    display: flex;      
-    margin-bottom: 50px;      
+    display: flex;              
     flex-wrap: wrap;
     justify-content: center;
+    margin: 0 auto;
 }
 
 li {
@@ -62,11 +62,13 @@ li {
     background: #A7E9AF;
     border: 1px solid #99CEA8;
     border-radius: 5px; 
-    margin-left: 35px;
-    margin-right: 35px; 
-    margin-bottom: 35px; 
+    margin: 15px;    
     transition: transform 1s;      
     transform-style: preserve-3d;
+}
+
+.largura8cartas {
+    width: 650px;
 }
 
 @media (max-width: 700px) {
