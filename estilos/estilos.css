@@ -3,7 +3,7 @@ body {
     font-family: 'Roboto';
 }
 
-.titulo {    
+.titulo {      
     font-size: 56px;    
     font-weight: 700;
     margin-top: 40px;
@@ -12,6 +12,18 @@ body {
     color:#75B79E;    
     line-height: 66px;
     letter-spacing: -0.004em;
+}
+
+.cronometro {
+    position: fixed;
+    top: 20px;
+    right: 0px;
+    padding-right: 5px;
+    font-size: 24px;     
+    color:#75B79E;    
+    line-height: 66px;
+    letter-spacing: -0.004em;  
+    top: -10px;
 }
 
 img {
@@ -79,6 +91,11 @@ li {
 
     li {
         margin: 20px auto;
+    }
+
+    .cronometro {
+        font-size: 20px;        
+        padding-right: 10px;
     }
 
 }

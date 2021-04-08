@@ -42,6 +42,25 @@ function virar (elemento) {
     const parrotimg = elemento.children [0]; 
     const parrotgif = elemento.children [1];
     parrotimg.classList.toggle("escondido");
-    parrotgif.classList.toggle("escondido");    
+    parrotgif.classList.toggle("escondido");
+    clique += 1;
+    
+    if (clique == 1) {
+        temporizador();
+    }   
 }
 
+let contador = 0;
+let timer;
+let clique = 0;
+
+function temporizador () {
+    timer = setInterval(atualizarTemporizador, 1000);
+}
+
+function atualizarTemporizador () {   
+    const cronometro = document.querySelector(".cronometro")
+    cronometro.innerHTML = `${contador}s` 
+    contador++;
+    console.log(contador)
+}
