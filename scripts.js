@@ -7,7 +7,7 @@ let ultimaCartaClicada = null;
 function perguntarNumeroCartas () {    
 
     while (numeroCartas%2 !== 0 || numeroCartas < 4 || numeroCartas > 14) {
-        numeroCartas = parseInt(prompt("Com quantas cartas você quer jogar?"));                  
+        numeroCartas = parseInt(prompt("Com quantas cartas você quer jogar? Escolha um número de 4 a 14, que seja par"));                  
     }
 
     inserirCartas()
@@ -33,7 +33,8 @@ function inserirCartas () {
         lista.innerHTML += `<li id="${listaCartasSelecionadas[i]}" onclick="virar(this)"><img src="imagens/front.png"><img src="imagens/${listaCartasSelecionadas[i]}.gif" class="escondido"></li>`               
     } 
     
-    mudaLargura();        
+    mudaLargura(); 
+          
 }
 
 function mudaLargura () {
@@ -52,7 +53,16 @@ function mudaLargura () {
         largura = 1050;
     }
     document.getElementById("listaCartas").style.width = `${largura}px`;    
+    
 }
+
+// function mudaLarguraMobile () {
+//    if (numeroCartas == 4 || 6 || 8 || 10 || 12 || 14) {
+//        largura = 100;
+//    }
+//    document.getElementById("listaCartas").style.width = `${largura}%`; 
+// } VER AONDE INSERIR
+
 
 
 function comparador() { 
@@ -66,7 +76,7 @@ function virar (primeiraCartaClicada) {
     parrotimg.classList.toggle("escondido");
     parrotgif.classList.toggle("escondido");    
 
-    clique += 1;
+    clique++;
     
     if (clique == 1) {
         temporizador();
@@ -74,12 +84,11 @@ function virar (primeiraCartaClicada) {
    
     if (ultimaCartaClicada == null) {            
         ultimaCartaClicada = primeiraCartaClicada; 
-        clique++;       
+               
     } else {
         if (primeiraCartaClicada.id !== ultimaCartaClicada.id) {
             desvirarCarta(primeiraCartaClicada)
-            desvirarCarta(ultimaCartaClicada)
-            clique++; 
+            desvirarCarta(ultimaCartaClicada)             
         }
 
         ultimaCartaClicada = null;
@@ -91,10 +100,22 @@ function virar (primeiraCartaClicada) {
 }
 
 function terminarJogo () {  
-    if (document.querySelectorAll(".virada").length == numeroCartas) {
-        alert (`Você ganhou em ${clique} jogadas!`) 
-    }     
+    if (document.querySelectorAll(".virada").length == numeroCartas) {       
+        setTimeout(chamaAlert, 50) 
+    }       
 }
+
+function chamaAlert () {
+    alert (`Você ganhou em ${clique} jogadas e em ${contador} segundos!`)
+    resposta = (prompt ("Obrigada por jogar! :) Você deseja reiniciar o jogo? Digite 'sim'")).toLowerCase(); 
+
+  
+    if (resposta == "sim") {
+       document.location.reload(true)
+    }
+
+}
+
 
 
 
@@ -114,6 +135,7 @@ function desvirarCarta (primeiraCartaClicada) {
 let contador = 0;
 let timer;
 let clique = 0;
+let resposta = null;
 
 function temporizador () {
     timer = setInterval(atualizarTemporizador, 1000);

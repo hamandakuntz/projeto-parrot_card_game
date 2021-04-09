@@ -67,9 +67,7 @@ li {
     transform-style: preserve-3d;
 }
 
-.largura8cartas {
-    width: 650px;
-}
+
 
 @media (max-width: 700px) {
     
@@ -85,10 +83,10 @@ li {
         margin: 0 auto;
     }
 
-    ul {
+    ul {        
         display: flex;  
         flex-direction: column;
-        margin-bottom: 0px;       
+        margin-bottom: 0px;                      
     }
 
     li {
