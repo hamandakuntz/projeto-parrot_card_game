@@ -86,7 +86,8 @@ li {
     ul {        
         display: flex;  
         flex-direction: column;
-        margin-bottom: 0px;                      
+        margin-bottom: 0px;   
+        max-width: 100%;                   
     }
 
     li {

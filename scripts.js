@@ -30,7 +30,7 @@ function inserirCartas () {
       
 
     for (let i = 0; i < numeroCartas ; i++) {            
-        lista.innerHTML += `<li id="${listaCartasSelecionadas[i]}" onclick="virar(this)"><img src="imagens/front.png"><img src="imagens/${listaCartasSelecionadas[i]}.gif" class="escondido"></li>`               
+        lista.innerHTML += `<li id="${listaCartasSelecionadas[i]}" onclick="virar(this)"><img src="imagens/front.png"><img src="imagens/${listaCartasSelecionadas[i]}.gif" class="escondido"></li>`
     } 
     
     mudaLargura(); 
@@ -55,15 +55,6 @@ function mudaLargura () {
     document.getElementById("listaCartas").style.width = `${largura}px`;    
     
 }
-
-// function mudaLarguraMobile () {
-//    if (numeroCartas == 4 || 6 || 8 || 10 || 12 || 14) {
-//        largura = 100;
-//    }
-//    document.getElementById("listaCartas").style.width = `${largura}%`; 
-// } VER AONDE INSERIR
-
-
 
 function comparador() { 
 	return Math.random() - 0.5; 
@@ -106,7 +97,7 @@ function terminarJogo () {
 }
 
 function chamaAlert () {
-    alert (`Você ganhou em ${clique} jogadas e em ${contador} segundos!`)
+    alert (`Você ganhou em ${clique} jogadas e em ${contador-1} segundos!`)
     resposta = (prompt ("Obrigada por jogar! :) Você deseja reiniciar o jogo? Digite 'sim'")).toLowerCase(); 
 
   
@@ -115,9 +106,6 @@ function chamaAlert () {
     }
 
 }
-
-
-
 
 function desvirarCartaNovamente (primeiraCartaClicada) {     // minha primeiraCartaClicada é uma array q recebe duas imagens?
      primeiraCartaClicada.classList.remove("virada");   
