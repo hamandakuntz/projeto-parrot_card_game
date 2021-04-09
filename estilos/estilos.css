@@ -63,7 +63,7 @@ li {
     border: 1px solid #99CEA8;
     border-radius: 5px; 
     margin: 15px;    
-    transition: transform 1s;      
+    transition: transform 0.7s;      
     transform-style: preserve-3d;
 }
 

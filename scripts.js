@@ -1,6 +1,8 @@
 let numeroCartas = 0;
 let listaCartas = ["bobrossparrot", "explodyparrot", "fiestaparrot", "metalparrot", "revertitparrot", "tripletsparrot", "unicornparrot"]
 let largura = 0;
+let listaCartasSelecionadas = [];
+let ultimaCartaClicada = null;
 
 function perguntarNumeroCartas () {    
 
@@ -17,8 +19,7 @@ function inserirCartas () {
 
     listaCartas.sort(comparador);
      
-    const lista = document.querySelector(".lista"); 
-    const listaCartasSelecionadas = [];
+    const lista = document.querySelector(".lista");     
 
     for (let i = 0; i < numeroCartas/2 ; i++) {       
         listaCartasSelecionadas.push(listaCartas[i]); 
@@ -29,11 +30,10 @@ function inserirCartas () {
       
 
     for (let i = 0; i < numeroCartas ; i++) {            
-        lista.innerHTML += `<li onclick="virar(this)"><img src="imagens/front.png"><img src="imagens/${listaCartasSelecionadas[i]}.gif" class="escondido"></li>`               
+        lista.innerHTML += `<li id="${listaCartasSelecionadas[i]}" onclick="virar(this)"><img src="imagens/front.png"><img src="imagens/${listaCartasSelecionadas[i]}.gif" class="escondido"></li>`               
     } 
     
-    mudaLargura();
-        
+    mudaLargura();        
 }
 
 function mudaLargura () {
@@ -55,22 +55,60 @@ function mudaLargura () {
 }
 
 
-
 function comparador() { 
 	return Math.random() - 0.5; 
 }
 
-function virar (elemento) {  
-    elemento.classList.toggle("virada");
-    const parrotimg = elemento.children [0]; 
-    const parrotgif = elemento.children [1];
+function virar (primeiraCartaClicada) {  
+    primeiraCartaClicada.classList.toggle("virada");
+    const parrotimg = primeiraCartaClicada.children [0]; 
+    const parrotgif = primeiraCartaClicada.children [1];
     parrotimg.classList.toggle("escondido");
-    parrotgif.classList.toggle("escondido");
+    parrotgif.classList.toggle("escondido");    
+
     clique += 1;
     
     if (clique == 1) {
         temporizador();
-    }   
+    } 
+   
+    if (ultimaCartaClicada == null) {            
+        ultimaCartaClicada = primeiraCartaClicada; 
+        clique++;       
+    } else {
+        if (primeiraCartaClicada.id !== ultimaCartaClicada.id) {
+            desvirarCarta(primeiraCartaClicada)
+            desvirarCarta(ultimaCartaClicada)
+            clique++; 
+        }
+
+        ultimaCartaClicada = null;
+        
+    }
+
+    terminarJogo()
+    
+}
+
+function terminarJogo () {  
+    if (document.querySelectorAll(".virada").length == numeroCartas) {
+        alert (`Você ganhou em ${clique} jogadas!`) 
+    }     
+}
+
+
+
+function desvirarCartaNovamente (primeiraCartaClicada) {     // minha primeiraCartaClicada é uma array q recebe duas imagens?
+     primeiraCartaClicada.classList.remove("virada");   
+     const parrotimg = primeiraCartaClicada.children [0]; 
+     const parrotgif = primeiraCartaClicada.children [1];
+     parrotimg.classList.toggle("escondido");
+     parrotgif.classList.toggle("escondido");
+}
+
+
+function desvirarCarta (primeiraCartaClicada) {
+    setTimeout(desvirarCartaNovamente, 1000, primeiraCartaClicada)    
 }
 
 let contador = 0;
@@ -84,7 +122,5 @@ function temporizador () {
 function atualizarTemporizador () {   
     const cronometro = document.querySelector(".cronometro")
     cronometro.innerHTML = `${contador}s` 
-    contador++;
-    console.log(contador)
+    contador++;   
 }
-
